@@ -13,7 +13,7 @@
         </div>
         <div class="row p-3 mt-3 mb-3 d-flex justify-content-center">
             <div v-for="pokemon in pokemons" :key="pokemon.name" class="col-sm-12 col-md-6 col-lg-6">
-                <div class="card d-flex justify-content-center align-items-center mb-3">
+                <div @click="irAPokemonDetails(pokemon.id)" class="card d-flex justify-content-center align-items-center mb-3">
                     <div class="card-title">
                         <h4 class="fw-bold text-uppercase">
                             {{ pokemon.name }}
@@ -41,8 +41,7 @@ export default {
     },
     data() {
         return {
-        pokemons: null,
-        selectedPokemon: {},
+        pokemons: [],
         start: 1,
         end: 10,
         loading: true
@@ -70,7 +69,15 @@ export default {
                 this.end += 10;
                 this.chargePokemons();
             }
-        }
+        },
+        irAPokemonDetails(id) {
+            this.$router.push({
+                name: 'pokemon',
+                params: {
+                id: id
+                }
+            })
+        },
     }
 }
 </script>

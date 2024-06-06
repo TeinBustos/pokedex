@@ -21,5 +21,14 @@ export default {
             gottenPokemons.push(addedPokemon)
         }
         return gottenPokemons;
-    }
+    },
+    async getPokemonDetail(id) {
+        return await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        .then(response => {
+            return response.data
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    },
 }
