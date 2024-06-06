@@ -1,6 +1,7 @@
 <template>
   <nav>
-    <router-link to="/">Pokemon List</router-link>
+    <router-link to="/">Pokemon List</router-link> |
+    <router-link to="/game">Pokemon Game</router-link>
   </nav>
   <router-view/>
 </template>

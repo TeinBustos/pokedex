@@ -31,4 +31,32 @@ export default {
             console.log(error)
         })
     },
+    async idsGamePokemon() {
+        let list = [];
+        for (let i = 0; i < 4; i++){
+            const id = Math.floor(Math.random() * 649) + 1;
+            list.push(id)
+        }
+        return list
+    },
+    async getPokemon(ids) {
+        let pokemonDetails = []
+        for(const id of ids) {
+            const details = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+            .then(response => {
+                return response.data
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+            const addedPokemon = {
+                id: details.id,
+                name: details.name,
+                image: details.sprites.other.dream_world.front_default
+            }
+            pokemonDetails.push(addedPokemon);
+        }
+        return pokemonDetails;
+    },
 }
